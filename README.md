@@ -65,6 +65,45 @@ The `crossover_algorithm` function operates as follows:
 ### Returning the Best Tour
 - After all generations have been processed, the function identifies and returns the best tour found in the final population, evaluated using the `tsp_cost` function.
 
+## Results
+
+### Vanuatu
+
+| Method                 | Cost | Number of Steps |
+|------------------------|------|-----------------|
+| greedy + mutation       |  1475.53    |    10003            |
+| greedy + crossover      |  1345.54km  |    16289            |
+| random + mutation       |   1475.53   |    10003            |
+| random + crossover      |   1353.08   |    16289            |
+
+### Italy
+
+| Method                 | Cost | Number of Steps |
+|------------------------|------|-----------------|
+| greedy + mutation       |  4436.03   |    30815            |
+| greedy + crossover      |  4431.36   |    85925            |
+| random + mutation       |  4402.93   |    21355            |
+| random + crossover      |  4431.36   |    85925            |
+
+### Russia
+
+| Method                 | Cost | Number of Steps |
+|------------------------|------|-----------------|
+| greedy + mutation       |  35970.76   |   361783            |
+| greedy + crossover      |  40045.40   |   92013             |
+| random + mutation       |  36097.84   |   280603            |
+| random + crossover      |  40051.59   |   92013             |
+
+### US
+
+| Method                 | Cost | Number of Steps |
+|------------------------|------|-----------------|
+| greedy + mutation       |  40209.83   |   1161175           |
+| greedy + crossover      |  46304.14   |   233413            |
+| random + mutation       |  41042.58   |   2730955           |
+| random + crossover      |  46304.14   |   233413            |
+
+
 ## Author
 
 This exercise was completed as part of the Computational Intelligence course, as Lab 1 exercise.
