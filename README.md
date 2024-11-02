@@ -23,7 +23,7 @@ The function begins by setting the current best population and calculating the i
 
 ### Mutation Process
 A mutation is applied with a probability defined by `mutation_rate`. If a random number is less than this rate, the function:
-- Mutates the paths in `new_population` by swapping a specified number of cities (using the `mutate` function).
+- Mutates the paths in `new_population` using a inverted mutation algorithm. 
 - Applies a local search to further refine the mutated paths (using the `local_search` function).
 
 ### Fitness Evaluation
@@ -50,7 +50,7 @@ The `crossover_algorithm` function operates as follows:
 - For each generation, a new population (`next_generation`) is created.
   - **Selection**: Two parents are selected from the population using `tournament_selection`.
   - **Crossover**: The `inv_crossover` function is used to produce a child tour from the two parents.
-  - **Mutation**: With probability equal to `mutation_rate`, the child is mutated.
+  - **Mutation**: With probability equal to `mutation_rate`, the child is mutated using a inverted mutation algorithm.
   - **Survival**: If the child has a lower cost than either parent, it is added to the next generation. Otherwise, a random parent is retained.
 
 ### Progress Reporting:
@@ -65,38 +65,50 @@ The `crossover_algorithm` function operates as follows:
 
 | Method                 | Cost | Number of Steps |
 |------------------------|------|-----------------|
-| greedy + mutation       |  1475.53    |    10003            |
-| greedy + crossover      |  1345.54km  |    16289            |
-| random + mutation       |   1475.53   |    10003            |
-| random + crossover      |   1353.08   |    16289            |
+| greedy + mutation       |  1475.53    |    10093            |
+| greedy + crossover      |  1345.54  |    196369 (500 gen)            |
+| random + mutation       |  1345.54   |    10303            |
+| random + crossover      |  1345.54   |    196369 (500 gen)            |
 
 ### Italy
 
 | Method                 | Cost | Number of Steps |
 |------------------------|------|-----------------|
-| greedy + mutation       |  4436.03   |    30815            |
-| greedy + crossover      |  4431.36   |    85925            |
-| random + mutation       |  4402.93   |    21355            |
-| random + crossover      |  4431.36   |    85925            |
+| greedy + mutation       |  4436.03   |    17571            |
+| greedy + crossover      |  4306.79   |    1074245 (500 gen) |            
+| random + mutation       |  4976.60   |    19463            |
+| random + crossover      |  4291.87   |    1074245            |
 
 ### Russia
 
 | Method                 | Cost | Number of Steps |
 |------------------------|------|-----------------|
-| greedy + mutation       |  35970.76   |   361783            |
-| greedy + crossover      |  40045.40   |   92013             |
-| random + mutation       |  36097.84   |   280603            |
-| random + crossover      |  40051.59   |   92013             |
+| greedy + mutation       |  35805.38   |   442963            |
+| greedy + crossover      |  34145.42   |   2333203 (1000 gen)  |           
+| random + mutation       |  36656.11   |   145303            |
+| random + crossover      |  34665.52   |   2333203 (1000 gen)  | 
+
+The last one continues to improve a bit after the 1000 gen.
 
 ### US
 
 | Method                 | Cost | Number of Steps |
 |------------------------|------|-----------------|
-| greedy + mutation       |  40209.83   |   1161175           |
-| greedy + crossover      |  46304.14   |   233413            |
-| random + mutation       |  41042.58   |   2730955           |
-| random + crossover      |  46304.14   |   233413            |
+| greedy + mutation       |  40540.23   |   742567           |
+| greedy + crossover      |  40275.63   |   2333203 (1000 gen)     |
+| random + mutation       |  40759.67   |   3568171           |
+| random + crossover      |  41067.56  |    5832853 (2500 gen)          |
 
+### China
+
+In this case the mutation_algorithm is executed without local search due to complexity.
+
+| Method                 | Cost | Number of Steps |
+|------------------------|------|-----------------|
+| greedy + mutation       |  54786.93   |   4721071          |
+| greedy + crossover      |  55809.75   |   6999403 (3000 gen)         |
+| random + mutation       |  965247.20  |  10003           |
+| random + crossover      |  61403.21  |    13998703 (6000 gen)       |
 
 ## Author
 
